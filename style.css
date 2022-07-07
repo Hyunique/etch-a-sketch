@@ -52,8 +52,87 @@ body {
     width: 30px;
     height: 30px;
     background-color: rgb(245, 245, 245);
-    border-color: rgb(188, 188, 188);
+    border-color: rgb(232, 232, 232);
     border-style: solid;
     border-width: 0.05px;
     box-sizing: border-box;
+}
+
+.middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.reset {
+    width: 100%;
+    height: 30px;
+    margin-top: 20px;
+}
+
+.resettoggle {
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 30px;
+    border-radius: 30px;
+    border-style: none;
+    background-color: pink;
+
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 0.7;
+    /* Fully shown on mouse-over */
+}
+
+.resettoggle::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    width: 30px;
+    /* Set a specific slider handle width */
+    height: 30px;
+    /* Slider handle height */
+    border-radius: 30px;
+    background-color: rgb(69, 75, 102);
+    /* Green background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.sizeControl {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-style: none;
+    background-color: pink;
+}
+
+
+
+.dark {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-style: none;
+    background-color: pink;
+}
+
+.rainbow {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border-style: none;
+    background-color: pink;
 }

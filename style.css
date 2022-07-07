@@ -2,10 +2,29 @@ body {
     background-color: rgb(69, 75, 102);
 }
 
-.background {
+
+
+.etchsketch {
+    width: 100%;
+    display: block;
+    position: absolute;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px pink;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.device {
     width: 1000px;
     height: 800px;
-    background-color: rgb(219, 208, 83);
+    background-color: rgb(36, 209, 203);
     border-style: none;
     border-radius: 40%;
     display: flex;
@@ -19,21 +38,21 @@ body {
     display: flex;
     flex-wrap: wrap;
     outline: 10px;
-    outline-style: groove;
-    outline-color: rgb(69, 75, 102);
+    outline-style: double;
+    outline-color: rgb(229, 238, 206);
     border-style: solid;
     border-width: 30px;
-    border-color: rgb(139, 129, 51);
+    border-color: rgb(248, 255, 229);
     border-radius: 30px;
     box-sizing: content-box;
     justify-content: center;
 }
 
-div {
+.boxes {
     width: 30px;
     height: 30px;
-    background-color: rgb(231, 231, 231);
-    border-color: gray;
+    background-color: rgb(245, 245, 245);
+    border-color: rgb(188, 188, 188);
     border-style: solid;
     border-width: 0.05px;
     box-sizing: border-box;

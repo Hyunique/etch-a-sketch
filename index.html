@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Press+Start+2P&display=swap"
             rel="stylesheet">
+
     </head>
 
     <body>
@@ -19,13 +20,24 @@
 
             <div class="device">
                 <div class="left">
-                    <div class="sizeControl"></div>
+                    <div class="sizeControl">
+                        <input class="gridSize" type="radio" id="4" value="4" name="size">
+                        <label for="4">4</label><br>
+                        <input class="gridSize" type="radio" id="16" value="16" name="size">
+                        <label for="16">16</label><br>
+                        <input class="gridSize" type="radio" id="32" value="32" name="size">
+                        <label for="32">32</label>
+
+                    </div>
 
                 </div>
                 <div class="middle">
                     <div class="boxContainer"> </div>
-                    <div class="reset">
-                        <input type="range" min="1" max="100" value="1" class="resettoggle">
+                    <div class="resettoggle">
+                        <label class="resetlabel">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
                     </div>
                 </div>
                 <div class="right">
@@ -36,6 +48,7 @@
 
         </div>
 
+        <span class="copyright">Built & designed by Hyunique</span>
 
         <script src="index.js"></script>
     </body>

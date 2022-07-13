@@ -38,6 +38,7 @@ body {
     height: 500px;
     display: grid;
     grid-template-columns: repeat(4, 25%);
+    /* https://css-tricks.com/introduction-fr-css-unit/ */
     outline: 10px;
     outline-style: double;
     outline-color: rgb(229, 238, 206);
@@ -141,43 +142,92 @@ input:checked+.slider:before {
     background-color: pink;
 } */
 
-
-.sizeControl {
+.left {
     width: 100px;
     height: 400px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-input {
-    display: none;
+.sizeControl {
+    width: 400px;
+    height: 100px;
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(270deg);
 }
 
-.sizeControl label {
+/********** Range Input Styles **********/
+/*Range Reset*/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
     cursor: pointer;
-    margin: 10px 10px;
+    width: 15rem;
 }
 
-label:before {
-    content: '';
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-    background: rgb(161, 255, 252);
-    border: 2px solid white;
-    border-radius: 50%;
-    z-index: 2;
-    transition: box-shadow .4s ease,
-        background .3s ease;
+/* Removes default focus */
+input[type="range"]:focus {
+    outline: none;
 }
 
-input:checked+label:before {
-    box-shadow: inset 0px 3px 0 2px pink;
-    background: #fff;
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 0.5rem;
 }
 
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    margin-top: -12px;
+    /* Centers thumb on the track */
+
+    /*custom styles*/
+    background-color: pink;
+    height: 2rem;
+    width: 2rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    outline: 3px solid rgb(255, 242, 168);
+    outline-offset: 0.125rem;
+}
+
+/******** Firefox styles ********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+    border: none;
+    /*Removes extra border that FF applies*/
+    border-radius: 0;
+    /*Removes default border-radius that FF applies*/
+
+    /*custom styles*/
+    background-color: pink;
+    height: 2rem;
+    width: 1rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+    outline: 3px solid rgb(255, 242, 168);
+    outline-offset: 0.125rem;
+}
 
 /* ******* Color mode change ******* */
 .dark {

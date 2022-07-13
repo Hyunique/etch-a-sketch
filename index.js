@@ -1,36 +1,24 @@
 
 /* Default grid */
 let container = document.querySelector('.boxContainer')
-let gridNum = 4
-for (let i = 0; i < gridNum * gridNum; i++) {
-    const boxes = document.createElement('div')
-    container.appendChild(boxes)
-    boxes.classList.add('boxes')
-    colorGrid()
-}
 
-let grid4 = document.querySelector('.grid4')
-let grid8 = document.querySelector('.grid8')
-let grid16 = document.querySelector('.grid16')
-let gridArr = [grid4, grid8, grid16]
+let gridController = document.querySelector('#gridSize')
+gridController.addEventListener('input', createGrid)
 
-for (let grid of gridArr) {
-    grid.addEventListener('click', removeGrid)
-    grid.addEventListener('click', createGrid)
-
-}
+createGrid(4)
 
 /* Function to create box and put it in grid */
-function createGrid() {
-    gridNum = this.getAttribute('value')
+function createGrid(gridNum) {
+    removeGrid()
+    gridNum = gridController.value;
     for (let i = 0; i < gridNum * gridNum; i++) {
         const boxes = document.createElement('div')
         container.appendChild(boxes)
         boxes.classList.add('boxes')
         container.style.gridTemplateColumns = `repeat(${gridNum}, 1fr)`;
         container.style.gridTemplateRows = `repeat(${gridNum}, 1fr)`;
-        colorGrid()
     }
+    colorGrid()
 }
 
 /* Select the box grid and add a click event to change color */
@@ -62,9 +50,22 @@ function removeGrid() {
     let boxes = container.querySelectorAll('div')
     boxes.forEach(boxes => boxes.remove());
 }
-/* 14th July _ Need to modify radio buttons to range input
+/* 14th July _
                 Make color function to be able with individual click */
 
 
+
+
+
+                // let grid4 = document.querySelector('.grid4')
+// let grid8 = document.querySelector('.grid8')
+// let grid16 = document.querySelector('.grid16')
+// let gridArr = [grid4, grid8, grid16]
+
+// for (let grid of gridArr) {
+//     grid.addEventListener('click', removeGrid)
+//     grid.addEventListener('click', createGrid)
+
+// }
 
 

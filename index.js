@@ -1,11 +1,12 @@
 
 /* Default grid */
 let container = document.querySelector('.boxContainer')
-
 let gridController = document.querySelector('#gridSize')
 gridController.addEventListener('input', createGrid)
 
 createGrid(4)
+const eraseBar = document.querySelector('.resetlabel')
+eraseBar.addEventListener('click', eraseColor)
 
 /* Function to create box and put it in grid */
 function createGrid(gridNum) {
@@ -35,37 +36,24 @@ function colorGrid() {
                 box.classList.add('colored')
             }
         })
-
     }
 }
 
-const eraseBar = document.querySelector('.resetlabel')
-eraseBar.addEventListener('click', eraseColor)
 
 function eraseColor() {
-    let box = document.querySelectorAll('.boxes')
-    box.classList.remove('colored')
+    boxes = document.querySelectorAll('.boxes')
+    for (let box of boxes) {
+        box.classList.remove('colored')
+    }
+
+    // boxes.forEach(boxes => boxes.classList.remove('colored'));
 }
+
 function removeGrid() {
     let boxes = container.querySelectorAll('div')
     boxes.forEach(boxes => boxes.remove());
 }
-/* 14th July _
+/* 14th July _  Erase bar!!! 
                 Make color function to be able with individual click */
-
-
-
-
-
-                // let grid4 = document.querySelector('.grid4')
-// let grid8 = document.querySelector('.grid8')
-// let grid16 = document.querySelector('.grid16')
-// let gridArr = [grid4, grid8, grid16]
-
-// for (let grid of gridArr) {
-//     grid.addEventListener('click', removeGrid)
-//     grid.addEventListener('click', createGrid)
-
-// }
 
 

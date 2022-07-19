@@ -9,8 +9,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Press+Start+2P&display=swap"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Press+Start+2P&display=swap" rel="stylesheet">
         <!--sound files //https://www.zapsplat.com// -->
     </head>
 
@@ -30,14 +29,25 @@
                     <div class="boxContainer"> </div>
                     <div class="resettoggle">
                         <label class="resetlabel">
+
                             <input type="checkbox">
                             <span class="slider"></span>
                         </label>
                     </div>
                 </div>
                 <div class="right">
-                    <div class="dark"></div>
-                    <div class="rainbow"></div>
+                    <label for="" class="radioWrap">
+                        <input type="radio" name="mode" id="colorMode" value="black" class="black" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label for="" class="radioWrap">
+                        <input type="radio" name="mode" id="colorMode" value="rainbow" class="rainbow">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label for="" class="radioWrap">
+                        <input type="radio" name="mode" id="colorMode" value="dark" class="dark">
+                        <span class="checkmark"></span>
+                    </label>
                 </div>
             </div>
 

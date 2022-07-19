@@ -1,11 +1,11 @@
 
-/* Default grid */
 let container = document.querySelector('.boxContainer')
 let gridController = document.querySelector('#gridSize')
-gridController.addEventListener('input', createGrid)
 let mouseDown = 0;
 document.body.onmousedown = () => mouseDown = 1;
 document.body.onmouseup = () => mouseDown = 0;
+/* Default grid */
+gridController.addEventListener('input', createGrid)
 createGrid(4)
 
 const eraseBar = document.querySelector('.resetlabel')
@@ -23,26 +23,38 @@ function createGrid(gridNum) {
         boxes.classList.add('boxes')
         container.style.gridTemplateColumns = `repeat(${gridNum}, 1fr)`;
         container.style.gridTemplateRows = `repeat(${gridNum}, 1fr)`;
-    }
+    } colorGrid()
 
 }
 
-/* color grid () */
-let boxes = document.querySelectorAll('.boxes')
-for (let box of boxes) {
-    box.addEventListener('mouseover', () => {
-        if (mouseDown) {
+/* Color background according to radio button value */
+function colorGrid() {
+    let boxes = document.querySelectorAll('.boxes')
+    for (let box of boxes) {
+        box.addEventListener('mouseover', () => {
+            if (mouseDown) {
+                getColorMode()
+                if (modeValue === 'black') {
+                    box.style.backgroundColor = 'black'
+                } else if (modeValue === 'rainbow') {
+                    box.style.backgroundColor = makeRandomColor()
+                } else if (modeValue === 'dark') {
+                    box.style.backgroundColor = ''
+                }
+            }
+        })
+        box.addEventListener('click', () => {
             getColorMode()
             if (modeValue === 'black') {
                 box.style.backgroundColor = 'black'
             } else if (modeValue === 'rainbow') {
-                console.log("Rainbow!")
                 box.style.backgroundColor = makeRandomColor()
             } else if (modeValue === 'dark') {
-                box.style.backgroundColor = '#fff009'
+                box.style.backgroundColor = ''
             }
         }
-    })
+        )
+    }
 }
 
 /* Get the value of radio button when checked */
@@ -55,6 +67,7 @@ function getColorMode() {
     }
 }
 
+/* Generate random RGB for rainbow color mode */
 function makeRandomColor() {
     const r = Math.floor(Math.random() * 255)
     const g = Math.floor(Math.random() * 255)
@@ -65,13 +78,15 @@ function makeRandomColor() {
 /* Function for erasing the whole canvas */
 function eraseColor() {
     boxes = document.querySelectorAll('.boxes')
-    boxes.forEach(boxes => boxes.style.backgroundColor = '');
+    for (let box of boxes) {
+        box.style.backgroundColor = ''
+    }
 }
 
-/* Remove current grid */
+/* Reset(remove) current grid size */
 function removeGrid() {
     let boxes = container.querySelectorAll('div')
-    boxes.forEach(boxes => boxes.remove());
+    for (let box of boxes) { box.remove() }
 }
 /*Original code************************************************* */
 /* Select the box grid and add a click event to change color */
@@ -125,3 +140,4 @@ function removeGrid() {
 
 
 /* 15th July _  color grid () is not working when new grid is made*/
+

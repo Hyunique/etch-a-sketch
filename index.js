@@ -1,11 +1,11 @@
-let container = document.querySelector(".canvas");
-let gridController = document.querySelector("#gridSize");
+const container = document.querySelector(".canvas");
+const gridController = document.querySelector("#gridSize");
 let mouseDown = 0;
 document.body.onmousedown = () => (mouseDown = 1);
 document.body.onmouseup = () => (mouseDown = 0);
 /* Default grid */
 gridController.addEventListener("input", createGrid);
-createGrid(4);
+createGrid(8);
 
 const eraseBtn = document.querySelector(".erase-btn");
 eraseBtn.addEventListener("click", eraseColor);
@@ -26,28 +26,28 @@ function createGrid(gridNum) {
 
 /* Color background according to radio button value */
 function colorGrid() {
-  let boxes = document.querySelectorAll(".boxes");
-  for (let box of boxes) {
-    box.addEventListener("mouseover", () => {
+  let cell = document.querySelectorAll(".cell");
+  for (let c of cell) {
+    c.addEventListener("mouseover", () => {
       if (mouseDown) {
         getColorMode();
         if (modeValue === "black") {
-          box.style.backgroundColor = "black";
+          c.style.backgroundColor = "black";
         } else if (modeValue === "rainbow") {
-          box.style.backgroundColor = makeRandomColor();
+          c.style.backgroundColor = makeRandomColor();
         } else if (modeValue === "dark") {
-          box.style.backgroundColor = "";
+          c.style.backgroundColor = "";
         }
       }
     });
-    box.addEventListener("click", () => {
+    c.addEventListener("click", () => {
       getColorMode();
       if (modeValue === "black") {
-        box.style.backgroundColor = "black";
+        c.style.backgroundColor = "black";
       } else if (modeValue === "rainbow") {
-        box.style.backgroundColor = makeRandomColor();
+        c.style.backgroundColor = makeRandomColor();
       } else if (modeValue === "dark") {
-        box.style.backgroundColor = "";
+        c.style.backgroundColor = "";
       }
     });
   }

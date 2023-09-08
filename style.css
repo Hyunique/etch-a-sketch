@@ -17,6 +17,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+button {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid var(--color-border);
+  border-bottom: 2px solid var(--color-border);
+}
 
 body {
   min-height: 100vh;
@@ -42,6 +48,8 @@ body {
   background-color: var(--color-btn);
   border: var(--border);
   margin: 10px 0;
+  font-size: 48px;
+  color: var(--color-border);
 }
 
 .app {
@@ -77,9 +85,15 @@ header {
 .close-btn {
   width: 20px;
   height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: var(--border);
   color: var(--color-border);
   background-color: var(--color-btn);
+}
+.min-btn {
+  padding-bottom: 4px;
 }
 .max-btn {
   border-width: 1px 0;
@@ -90,10 +104,13 @@ main {
   padding: 10px;
 }
 .tools {
+  width: 40px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin: 20px 0;
 }
 .tool-btns {
   display: flex;
@@ -107,6 +124,7 @@ main {
   height: 40px;
   background-color: var(--color-btn);
   border: var(--border);
+  font-size: 24px;
 }
 .sizeControl {
   width: 60px;
@@ -154,6 +172,7 @@ main {
 .canvas {
   width: 500px;
   height: 500px;
+  margin: 20px;
   display: grid;
   grid-template-columns: repeat(4, 25%);
   border: var(--border);
@@ -162,7 +181,7 @@ main {
   background-color: white;
   width: auto;
   height: auto;
-  border: var(--border);
+  /* border: var(--border); */
 }
 
 footer {
@@ -171,22 +190,32 @@ footer {
   left: 0;
   right: 0;
   width: 100vw;
-  height: 40px;
+  height: 42px;
   background-color: var(--color-shade);
   color: #fff;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
   grid-gap: 10px;
   padding: 0 10px;
+  align-items: center;
 }
 footer div {
+  height: 40px;
+  display: flex;
   border: var(--border);
+  background-color: var(--color-btn);
+  color: var(--color-border);
+  padding: 0 10px;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
 }
 .author {
   grid-column: 1/1;
 }
 .program {
-  grid-column: 3 / span 4;
+  grid-column: 2 / span 4;
+  justify-content: left;
 }
 .time {
   grid-column: 15 / span 2;

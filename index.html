@@ -14,48 +14,88 @@
     </head>
 
     <body>
-        <h1 class="etchsketch">Etch A Sketch</h1>
-        <div class="container">
-
-            <div class="device">
-                <div class="left">
+        <div class="system-btn">
+            <button class="app-icon">🎨</button>
+            <button class="theme">🌖</button>
+        </div>
+        <div class="app">
+            <header>
+                <h1 class="title">Bob Ross</h1>
+                <div class="header-btns">
+                    <button class="min-btn">_</button>
+                    <button class="max-btn">ㅁ</button>
+                    <button class="close-btn">X</button>
+                </div>
+            </header>
+            <main>
+                <div class="tools">
+                    <div class="tool-btns">
+                        <button>✏️</button>
+                        <button>🌈</button>
+                        <button>🪄</button>
+                        <button class="erase-btn">✨</button>
+                    </div>
                     <div class="sizeControl">
                         <label for="gridSize"></label>
-                        <input type="range" id="gridSize" name="size" min="4" max="36" step="4" value="4">
-                    </div>
-
-                </div>
-                <div class="middle">
-                    <div class="boxContainer"> </div>
-                    <div class="resettoggle">
-                        <label class="resetlabel">
-
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                        </label>
+                        <input type="range" class="slider" id="gridSize" name="size" min="4" max="36" step="4"
+                            value="4">
                     </div>
                 </div>
-                <div class="right">
-                    <label for="" class="radioWrap">
-                        <input type="radio" name="mode" id="colorMode" value="black" class="black" checked>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label for="" class="radioWrap">
-                        <input type="radio" name="mode" id="colorMode" value="rainbow" class="rainbow">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label for="" class="radioWrap">
-                        <input type="radio" name="mode" id="colorMode" value="dark" class="dark">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-            </div>
+                <div class="canvas">
 
+                </div>
+            </main>
         </div>
-
-        <span class="copyright">Built & designed by Hyunique</span>
+        <footer>
+            <div class="author">👩🏽‍💻</div>
+            <div class="program">🎨 Painter</div>
+            <div class="modal" style="display: none;">
+                <h1 class="copyright">Designed & Built by Elena</h1>
+                <span>Github</span>
+            </div>
+            <div class="time">12 : 35</div>
+        </footer>
 
         <script src="index.js"></script>
     </body>
 
 </html>
+
+
+<!-- <h1 class="etchsketch">Etch A Sketch</h1>
+            <div class="container">
+    
+                <div class="device">
+                    <div class="left">
+    
+    
+                    </div>
+                    <div class="middle">
+                        <div class="boxContainer"> </div>
+                        <div class="resettoggle">
+                            <label class="resetlabel">
+    
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <label for="" class="radioWrap">
+                            <input type="radio" name="mode" id="colorMode" value="black" class="black" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="" class="radioWrap">
+                            <input type="radio" name="mode" id="colorMode" value="rainbow" class="rainbow">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label for="" class="radioWrap">
+                            <input type="radio" name="mode" id="colorMode" value="dark" class="dark">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+    
+            </div>
+    
+            <span class="copyright">Built & designed by Hyunique</span> -->

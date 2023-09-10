@@ -14,24 +14,31 @@
 
     <body>
         <div class="system-btn">
-            <button class="app-icon"><span class="material-symbols-outlined">
-                    palette
-                </span></button>
-            <button class="theme">🌖</button>
+            <div>
+                <button class="app-icon"><span class="material-symbols-outlined">
+                        palette
+                    </span></button>
+                <h3 class="icon-title">Painter</h3>
+            </div>
+            <div>
+                <button class="theme">🌖</button>
+            </div>
+            <h3 class="icon-title">Theme</h3>
         </div>
-        <div class="app">
+
+        <div class="app border-off">
             <header>
-                <h1 class="title">You can make a miracle</h1>
+                <h1 class="title">May Bob Ross be with you .jpg</h1>
                 <div class="header-btns">
-                    <button class="min-btn"><span class="material-symbols-outlined">
+                    <button class="min-btn border-off"><span class="material-symbols-outlined">
                             minimize
                         </span></button>
-                    <button class="max-btn"><span class="material-symbols-outlined">
-                            <span class="material-symbols-outlined">
-                                stop
-                            </span>
-                        </span></button>
-                    <button class="close-btn"><span class="material-symbols-outlined">
+                    <button class="max-btn border-off">
+                        <span class="material-symbols-outlined">
+                            stop
+                        </span>
+                    </button>
+                    <button class="close-btn border-off"><span class="material-symbols-outlined">
                             close
                         </span></button>
                 </div>
@@ -39,32 +46,32 @@
             <main>
                 <div class="tools">
                     <div class="tool-btns">
-                        <button id="colorMode" value="black">✏️</button>
-                        <button id="colorMode" value="rainbow">🌈</button>
-                        <button id="colorMode" value="erase" class="erase-btn">✨</button>
-                        <button>🪄</button>
+                        <button class="border-off" id="colorMode" value="black">✏️</button>
+                        <button class="border-off" id="colorMode" value="rainbow">🌈</button>
+                        <button class="border-off" id="colorMode" value="erase" class="erase-btn">✨</button>
+                        <button class="border-off">🪄</button>
                     </div>
                     <div class="sizeControl">
                         <label for="gridSize"></label>
-                        <input type="range" class="slider" id="gridSize" name="size" min="8" max="52" step="4"
+                        <input type="range" class="slider clicked" id="gridSize" name="size" min="8" max="52" step="4"
                             value="4">
                     </div>
                 </div>
                 <div>
-                    <div class="canvas">
+                    <div class="canvas clicked">
 
                     </div>
                 </div>
             </main>
         </div>
         <footer>
-            <div class="author">👩🏽‍💻</div>
-            <div class="program">🎨 Painter</div>
+            <div class="author border-off">👩🏽‍💻</div>
+            <div class="program clicked">🎨May Bob Ross.. - Painter</div>
             <div class="modal" style="display: none;">
                 <h1 class="copyright">Designed & Built by Elena</h1>
                 <span>Github</span>
             </div>
-            <div class="time">12 : 35</div>
+            <div class="time clicked">12 : 35</div>
         </footer>
 
         <script src="index.js"></script>

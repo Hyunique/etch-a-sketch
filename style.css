@@ -131,6 +131,7 @@ main {
   background-color: var(--color-btn);
   /* border: var(--border); */
   font-size: 24px;
+  cursor: pointer;
 }
 .sizeControl {
   width: 60px;
@@ -222,6 +223,7 @@ footer div {
 .author-btn {
   grid-column: 1/1;
   background-color: var(--color-shade);
+  cursor: pointer;
 }
 .program-btn {
   grid-column: 2 / span 4;
@@ -239,12 +241,25 @@ footer div {
   left: 10px;
   width: 300px;
   height: 400px;
-  background-color: var(--color-system-bg);
-  border: var(--border);
-  font-family: var(--font);
+  background-color: var(--color-btn);
   font-size: 1rem;
   display: none;
   flex-direction: column;
+}
+.copyright {
+  font-family: var(--font);
+  font-weight: 300;
+}
+.social-icons {
+  width: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+  background-color: inherit;
+}
+.social-icons a {
+  color: var(--color-border);
+  text-decoration: none;
 }
 /* REFERENCE CODE
 

@@ -2,6 +2,7 @@ const canvas = document.querySelector(".canvas");
 const toolBtnsContainer = document.querySelector(".tool-btns");
 const clearBtn = document.querySelector(".clear-btn");
 const gridController = document.querySelector("#gridSize");
+const toolBtns = document.querySelectorAll(".tool-btn");
 let mouseDown = 0;
 let colorState = "black";
 
@@ -11,7 +12,9 @@ document.body.onmouseup = () => (mouseDown = 0);
 gridController.addEventListener("input", createGrid);
 createGrid(8);
 toolBtnsContainer.addEventListener("click", (e) => {
+  toolBtns.forEach((btn) => btn.classList.remove("clicked"));
   if (e.target.tagName === "BUTTON") {
+    e.target.classList.toggle("clicked");
     setColorState(e);
   }
 });
@@ -119,3 +122,9 @@ function removeGrid() {
     cell.remove();
   }
 }
+
+/* TODO
+1. Button clicked class toggle
+2. Author modal
+3. App minimize function
+ */

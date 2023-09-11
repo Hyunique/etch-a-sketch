@@ -1,14 +1,21 @@
-const container = document.querySelector(".canvas");
+const canvas = document.querySelector(".canvas");
+const toolBtnsContainer = document.querySelector(".tool-btns");
+const clearBtn = document.querySelector(".clear-btn");
 const gridController = document.querySelector("#gridSize");
 let mouseDown = 0;
+let colorState = "black";
+
 document.body.onmousedown = () => (mouseDown = 1);
 document.body.onmouseup = () => (mouseDown = 0);
 /* Default grid */
 gridController.addEventListener("input", createGrid);
 createGrid(8);
-
-const eraseBtn = document.querySelector(".erase-btn");
-eraseBtn.addEventListener("click", eraseColor);
+toolBtnsContainer.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
+    setColorState(e);
+  }
+});
+clearBtn.addEventListener("click", clearCellColor);
 
 /* Function to create box and put it in grid */
 function createGrid(gridNum) {
@@ -16,54 +23,80 @@ function createGrid(gridNum) {
   gridNum = gridController.value;
   for (let i = 0; i < gridNum * gridNum; i++) {
     const cell = document.createElement("div");
-    container.appendChild(cell);
+    canvas.appendChild(cell);
     cell.classList.add("cell");
-    container.style.gridTemplateColumns = `repeat(${gridNum}, 1fr)`;
-    container.style.gridTemplateRows = `repeat(${gridNum}, 1fr)`;
+    canvas.style.gridTemplateColumns = `repeat(${gridNum}, 1fr)`;
+    canvas.style.gridTemplateRows = `repeat(${gridNum}, 1fr)`;
   }
-  colorGrid();
+  paintCell(colorState);
 }
+function setColorState(e) {
+  let colorMode = e.target.value;
+  colorState = colorMode;
+  return colorState;
+}
+function paintCell(color) {
+  canvas.addEventListener("click", (e) => {
+    //  let cellColor = e.target.style.backgroundColor
+    if (e.target.classList.contains("cell")) {
+      switch (colorState) {
+        case "rainbow":
+          e.target.style.backgroundColor = makeRandomColor();
+          break;
+        case "erase":
+          e.target.style.backgroundColor = "white";
+          break;
 
-/* Color background according to radio button value */
-function colorGrid() {
-  let cell = document.querySelectorAll(".cell");
-  for (let c of cell) {
-    c.addEventListener("mouseover", () => {
-      if (mouseDown) {
-        getColorMode();
-        if (modeValue === "black") {
-          c.style.backgroundColor = "black";
-        } else if (modeValue === "rainbow") {
-          c.style.backgroundColor = makeRandomColor();
-        } else if (modeValue === "dark") {
-          c.style.backgroundColor = "";
+        case "black":
+        default:
+          e.target.style.backgroundColor = "black";
+          break;
+      }
+    }
+  });
+  canvas.addEventListener("mouseover", (e) => {
+    if (mouseDown) {
+      if (e.target.classList.contains("cell")) {
+        switch (colorState) {
+          case "rainbow":
+            e.target.style.backgroundColor = makeRandomColor();
+            break;
+          case "erase":
+            e.target.style.backgroundColor = "white";
+            break;
+
+          case "black":
+          default:
+            e.target.style.backgroundColor = "black";
+            break;
         }
       }
-    });
-    c.addEventListener("click", () => {
-      getColorMode();
-      if (modeValue === "black") {
-        c.style.backgroundColor = "black";
-      } else if (modeValue === "rainbow") {
-        c.style.backgroundColor = makeRandomColor();
-      } else if (modeValue === "dark") {
-        c.style.backgroundColor = "";
-      }
-    });
-  }
-}
-
-/* Get the value of radio button when checked */
-function getColorMode() {
-  let colorModes = document.querySelectorAll("#colorMode");
-  for (i = 0; i < colorModes.length; i++) {
-    if (colorModes[i].checked) {
-      return (modeValue = colorModes[i].getAttribute("value"));
     }
-  }
+  });
 }
 
-/* Generate random RGB for rainbow color mode */
+// const colorMapping = {
+//   rainbow: () => makeRandomColor(),
+//   erase: () => "white",
+//   black: () => "black",
+// };
+
+// function paintCell(colorState) {
+//   function setColor(e) {
+//     if (e.target.classList.contains("cell")) {
+//       const colorFunction = colorMapping[colorState] || colorMapping.black;
+//       e.target.style.backgroundColor = colorFunction();
+//     }
+//   }
+
+//   canvas.addEventListener("click", setColor);
+//   canvas.addEventListener("mouseover", (e) => {
+//     if (mouseDown) {
+//       setColor(e);
+//     }
+//   });
+// }
+
 function makeRandomColor() {
   const r = Math.floor(Math.random() * 255);
   const g = Math.floor(Math.random() * 255);
@@ -72,19 +105,17 @@ function makeRandomColor() {
 }
 
 /* Function for erasing the whole canvas */
-function eraseColor() {
-  boxes = document.querySelectorAll(".boxes");
-  for (let box of boxes) {
-    box.style.backgroundColor = "";
+function clearCellColor() {
+  cells = document.querySelectorAll(".cell");
+  for (let cell of cells) {
+    cell.style.backgroundColor = "";
   }
 }
 
 /* Reset(remove) current grid size */
 function removeGrid() {
-  let boxes = container.querySelectorAll("div");
-  for (let box of boxes) {
-    box.remove();
+  cells = document.querySelectorAll(".cell");
+  for (let cell of cells) {
+    cell.remove();
   }
 }
-
-/* 15th July _  color grid () is not working when new grid is made*/

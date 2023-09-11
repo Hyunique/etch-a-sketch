@@ -123,8 +123,19 @@ function removeGrid() {
   }
 }
 
+const authorBtn = document.querySelector(".author-btn");
+const authorModal = document.querySelector(".modal");
+authorBtn.addEventListener("click", () => {
+  authorBtn.classList.toggle("clicked");
+  if (authorBtn.classList.contains("clicked")) {
+    authorModal.style.display = "flex";
+  } else {
+    authorModal.style.display = "none";
+  }
+});
 /* TODO
-1. Button clicked class toggle
-2. Author modal
+1. Button clicked class toggle ///////
+2. Author modal styling
 3. App minimize function
+4. Time
  */

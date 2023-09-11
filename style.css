@@ -219,11 +219,11 @@ footer div {
   align-items: center;
   justify-content: center;
 }
-.author {
+.author-btn {
   grid-column: 1/1;
   background-color: var(--color-shade);
 }
-.program {
+.program-btn {
   grid-column: 2 / span 4;
   justify-content: left;
   font-size: 1rem;
@@ -233,7 +233,19 @@ footer div {
   font-size: 0.9rem;
   background: var(--color-shade);
 }
-
+.modal {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  width: 300px;
+  height: 400px;
+  background-color: var(--color-system-bg);
+  border: var(--border);
+  font-family: var(--font);
+  font-size: 1rem;
+  display: none;
+  flex-direction: column;
+}
 /* REFERENCE CODE
 
 .left {

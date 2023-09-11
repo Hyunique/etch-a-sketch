@@ -1,151 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap");
+
+:root {
+  --color-system-bg: #fdf1df;
+  --color-app-bg: #f6f0e7;
+  --color-shade: #ead6b8;
+  --color-btn: #fcf7ef;
+  --color-border: #936622;
+  --color-point: rgb(255, 136, 0);
+
+  --border: 1px solid var(--color-border);
+  --font: "Nunito", sans-serif; /*300,400*/
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.border-off {
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-right: 2px solid #c0a275;
+  border-bottom: 2px solid #c0a275;
+}
+.clicked {
+  border-top: 2px solid #c0a275;
+  border-left: 2px solid #c0a275;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+}
+
 body {
-    background-color: rgb(69, 75, 102);
-
+  min-height: 100vh;
+  background-color: var(--color-system-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font);
+  font-size: 1rem;
+}
+.system-btn {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 40px;
+}
+.app-icon,
+.theme {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-system-bg);
+  border: none;
+  font-size: 24px;
+  color: var(--color-border);
+}
+.icon-title {
+  font-size: 0.9rem;
+  color: var(--color-border);
 }
 
-
-
-.etchsketch {
-    width: 100%;
-    display: block;
-    position: absolute;
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 2px pink;
-    font-family: 'Press Start 2P', cursive;
-    margin-top: 60px;
+.app {
+  border-radius: 14px;
+  background-color: var(--color-app-bg);
+  width: clamp(400px, 600px, 1000px);
+  height: clamp(400px, 600px, 1000px);
+  box-shadow: 10px 10px 20px 2px var(--color-shade);
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+header {
+  border-radius: 14px 14px 0 0;
+  border-bottom: 2px solid #ac9572;
+  background-color: var(--color-shade);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0 14px;
 }
-
-.device {
-    margin-top: 20px;
-    width: 1000px;
-    height: 800px;
-    background-color: rgb(36, 209, 203);
-    border-style: none;
-    border-radius: 30%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    box-shadow: 5px 10px 20px white inset;
-    font-family: baloo;
+.title {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
-
-.boxContainer {
-    width: 500px;
-    height: 500px;
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
-    /* https://css-tricks.com/introduction-fr-css-unit/ */
-    outline: 10px;
-    outline-style: double;
-    outline-color: rgb(229, 238, 206);
-    border-style: solid;
-    border-width: 30px;
-    border-color: rgb(248, 255, 229);
-    border-radius: 30px;
-    box-sizing: content-box;
-    justify-content: center;
+.header-btns {
+  display: flex;
+  width: auto;
 }
-
-.boxContainer div {
-    width: auto;
-    height: auto;
-    background-color: rgb(245, 245, 245);
-    border-color: rgb(232, 232, 232);
-    border-style: solid;
-    border-width: 0.05px;
-    box-sizing: border-box;
+.min-btn,
+.max-btn,
+.close-btn {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: var(--border); */
+  color: var(--color-border);
+  background-color: var(--color-btn);
 }
-
-.boxContainer div.colored {
-    background-color: rgb(38, 38, 38);
+.min-btn {
+  padding-bottom: 4px;
 }
-
-
-
-.middle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
+main {
+  display: flex;
+  padding: 10px;
+  border-top: 2px solid white;
 }
-
-
-
-/* *******Erase button toggle ******* */
-.resettoggle {
-    position: relative;
-    display: inline-block;
-    width: 540px;
-    height: 30px;
-    margin-top: 20px;
+.tools {
+  width: 40px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
 }
-
-.resettoggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-
+.tool-btns {
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  height: 160px;
+  align-items: center;
 }
-
+.tool-btns button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-btn);
+  /* border: var(--border); */
+  font-size: 24px;
+  cursor: pointer;
+}
+.sizeControl {
+  width: 60px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(270deg);
+}
 .slider {
-    border-radius: 30px;
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: pink;
-    -webkit-transition: .4s;
-    transition: .4s;
+  -webkit-appearance: none;
+  width: 140px;
+  height: 6px;
+  background: var(--color-shade);
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 24px;
-    width: 24px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: 1.6s;
-    transition: 1.6s;
-    border-radius: 50%;
+.slider:hover {
+  opacity: 1;
 }
 
-input:checked+.slider {
-    background-color: rgb(255, 242, 168);
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--color-shade);
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid #ae8f5f;
+  border-bottom: 2px solid #ae8f5f;
+  cursor: pointer;
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--color-shade);
+  border: var(--border);
+  cursor: pointer;
 }
 
-input:checked+.slider:before {
-    -webkit-transform: translateX(100px);
-    -ms-transform: translateX(100px);
-    transform: translateX(510px);
+.canvas {
+  width: 500px;
+  height: 500px;
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+}
+.cell {
+  background-color: white;
+  width: auto;
+  height: auto;
+  /* border: var(--border); */
 }
 
-/***********************/
-
-
-/* Size control range bar */
-/* .sizeControl {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border-style: none;
-    background-color: pink;
-} */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 42px;
+  border-top: 2px solid var(--color-btn);
+  background-color: var(--color-shade);
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  grid-gap: 10px;
+  padding: 0 10px;
+  align-items: center;
+}
+footer div {
+  height: 36px;
+  display: flex;
+  /* border: var(--border); */
+  background: var(--color-system-bg);
+  color: var(--color-border);
+  padding: 0 10px;
+  margin: 3px 0;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.author-btn {
+  grid-column: 1/1;
+  background-color: var(--color-shade);
+  cursor: pointer;
+}
+.program-btn {
+  grid-column: 2 / span 4;
+  justify-content: left;
+  font-size: 1rem;
+}
+.time {
+  grid-column: 16 / span 1;
+  font-size: 0.9rem;
+  background: var(--color-shade);
+}
+.modal {
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+  width: 300px;
+  height: 400px;
+  background-color: var(--color-btn);
+  font-size: 1rem;
+  display: none;
+  flex-direction: column;
+}
+.copyright {
+  font-family: var(--font);
+  font-weight: 300;
+}
+.social-icons {
+  width: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+  background-color: inherit;
+}
+.social-icons a {
+  color: var(--color-border);
+  text-decoration: none;
+}
+/* REFERENCE CODE
 
 .left {
     width: 100px;
@@ -153,112 +269,50 @@ input:checked+.slider:before {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
+  
 
-.sizeControl {
-    width: 400px;
-    height: 100px;
-    position: inherit;
+  
+  
+  .boxContainer div.colored {
+    background-color: rgb(38, 38, 38);
+  }
+  
+  .middle {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: rotate(270deg);
-}
-
-
-
-/********** Range Input Styles **********/
-/*Range Reset*/
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    cursor: pointer;
-    width: 15rem;
-}
-
-/* Removes default focus */
-input[type="range"]:focus {
-    outline: none;
-}
-
-/***** Chrome, Safari, Opera and Edge Chromium styles *****/
-/* slider track */
-input[type="range"]::-webkit-slider-runnable-track {
-    background-color: white;
-    border-radius: 0.5rem;
-    height: 0.5rem;
-}
-
-/* slider thumb */
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    /* Override default look */
-    appearance: none;
-    margin-top: -12px;
-    /* Centers thumb on the track */
-
-    /*custom styles*/
-    background-color: pink;
-    height: 2rem;
-    width: 2rem;
-}
-
-input[type="range"]:focus::-webkit-slider-thumb {
-    outline: 3px solid rgb(255, 242, 168);
-    outline-offset: 0.125rem;
-}
-
-/******** Firefox styles ********/
-/* slider track */
-input[type="range"]::-moz-range-track {
-    background-color: white;
-    border-radius: 0.5rem;
-    height: 0.5rem;
-}
-
-/* slider thumb */
-input[type="range"]::-moz-range-thumb {
-    border: none;
-    /*Removes extra border that FF applies*/
-    border-radius: 0;
-    /*Removes default border-radius that FF applies*/
-
-    /*custom styles*/
-    background-color: pink;
-    height: 2rem;
-    width: 1rem;
-}
-
-input[type="range"]:focus::-moz-range-thumb {
-    outline: 3px solid rgb(255, 242, 168);
-    outline-offset: 0.125rem;
-}
-
-/* ******* Color mode change ******* */
-
-.right {
+    margin-top: 40px;
+  }
+ 
+  / Color mode change /
+  
+  .right {
     width: 100px;
     height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-#colorMode {
+  }
+  
+  #colorMode {
     width: 40px;
     height: 40px;
     margin-top: 20px;
     cursor: pointer;
-}
-
-
-.copyright {
+  }
+  
+  .copyright {
     padding-top: 40px;
     display: block;
     text-align: center;
     color: white;
-    font-family: 'Gugi', cursive;
-}
+    font-family: "Gugi", cursive;
+  }
+  
+
+
+
+*/

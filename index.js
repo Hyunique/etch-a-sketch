@@ -1,143 +1,154 @@
-
-let container = document.querySelector('.boxContainer')
-let gridController = document.querySelector('#gridSize')
+const canvas = document.querySelector(".canvas");
+const toolBtnsContainer = document.querySelector(".tool-btns");
+const clearBtn = document.querySelector(".clear-btn");
+const gridController = document.querySelector("#gridSize");
+const toolBtns = document.querySelectorAll(".tool-btn");
 let mouseDown = 0;
-document.body.onmousedown = () => mouseDown = 1;
-document.body.onmouseup = () => mouseDown = 0;
+let colorState = "black";
+
+document.body.onmousedown = () => (mouseDown = 1);
+document.body.onmouseup = () => (mouseDown = 0);
 /* Default grid */
-gridController.addEventListener('input', createGrid)
-createGrid(4)
-
-const eraseBar = document.querySelector('.resetlabel')
-eraseBar.addEventListener('click', eraseColor)
-
-
+gridController.addEventListener("input", createGrid);
+createGrid(8);
+toolBtnsContainer.addEventListener("click", (e) => {
+  toolBtns.forEach((btn) => btn.classList.remove("clicked"));
+  if (e.target.tagName === "BUTTON") {
+    e.target.classList.toggle("clicked");
+    setColorState(e);
+  }
+});
+clearBtn.addEventListener("click", clearCellColor);
 
 /* Function to create box and put it in grid */
 function createGrid(gridNum) {
-    removeGrid()
-    gridNum = gridController.value;
-    for (let i = 0; i < gridNum * gridNum; i++) {
-        const boxes = document.createElement('div')
-        container.appendChild(boxes)
-        boxes.classList.add('boxes')
-        container.style.gridTemplateColumns = `repeat(${gridNum}, 1fr)`;
-        container.style.gridTemplateRows = `repeat(${gridNum}, 1fr)`;
-    } colorGrid()
-
+  removeGrid();
+  gridNum = gridController.value;
+  for (let i = 0; i < gridNum * gridNum; i++) {
+    const cell = document.createElement("div");
+    canvas.appendChild(cell);
+    cell.classList.add("cell");
+    canvas.style.gridTemplateColumns = `repeat(${gridNum}, 1fr)`;
+    canvas.style.gridTemplateRows = `repeat(${gridNum}, 1fr)`;
+  }
+  paintCell(colorState);
 }
+function setColorState(e) {
+  let colorMode = e.target.value;
+  colorState = colorMode;
+  return colorState;
+}
+function paintCell(color) {
+  canvas.addEventListener("click", (e) => {
+    //  let cellColor = e.target.style.backgroundColor
+    if (e.target.classList.contains("cell")) {
+      switch (colorState) {
+        case "rainbow":
+          e.target.style.backgroundColor = makeRandomColor();
+          break;
+        case "erase":
+          e.target.style.backgroundColor = "white";
+          break;
 
-/* Color background according to radio button value */
-function colorGrid() {
-    let boxes = document.querySelectorAll('.boxes')
-    for (let box of boxes) {
-        box.addEventListener('mouseover', () => {
-            if (mouseDown) {
-                getColorMode()
-                if (modeValue === 'black') {
-                    box.style.backgroundColor = 'black'
-                } else if (modeValue === 'rainbow') {
-                    box.style.backgroundColor = makeRandomColor()
-                } else if (modeValue === 'dark') {
-                    box.style.backgroundColor = ''
-                }
-            }
-        })
-        box.addEventListener('click', () => {
-            getColorMode()
-            if (modeValue === 'black') {
-                box.style.backgroundColor = 'black'
-            } else if (modeValue === 'rainbow') {
-                box.style.backgroundColor = makeRandomColor()
-            } else if (modeValue === 'dark') {
-                box.style.backgroundColor = ''
-            }
-        }
-        )
+        case "black":
+        default:
+          e.target.style.backgroundColor = "black";
+          break;
+      }
     }
-}
+  });
+  canvas.addEventListener("mouseover", (e) => {
+    if (mouseDown) {
+      if (e.target.classList.contains("cell")) {
+        switch (colorState) {
+          case "rainbow":
+            e.target.style.backgroundColor = makeRandomColor();
+            break;
+          case "erase":
+            e.target.style.backgroundColor = "white";
+            break;
 
-/* Get the value of radio button when checked */
-function getColorMode() {
-    let colorModes = document.querySelectorAll('#colorMode')
-    for (i = 0; i < colorModes.length; i++) {
-        if (colorModes[i].checked) {
-            return modeValue = colorModes[i].getAttribute('value')
+          case "black":
+          default:
+            e.target.style.backgroundColor = "black";
+            break;
         }
+      }
     }
+  });
 }
 
-/* Generate random RGB for rainbow color mode */
+// const colorMapping = {
+//   rainbow: () => makeRandomColor(),
+//   erase: () => "white",
+//   black: () => "black",
+// };
+
+// function paintCell(colorState) {
+//   function setColor(e) {
+//     if (e.target.classList.contains("cell")) {
+//       const colorFunction = colorMapping[colorState] || colorMapping.black;
+//       e.target.style.backgroundColor = colorFunction();
+//     }
+//   }
+
+//   canvas.addEventListener("click", setColor);
+//   canvas.addEventListener("mouseover", (e) => {
+//     if (mouseDown) {
+//       setColor(e);
+//     }
+//   });
+// }
+
 function makeRandomColor() {
-    const r = Math.floor(Math.random() * 255)
-    const g = Math.floor(Math.random() * 255)
-    const b = Math.floor(Math.random() * 255)
-    return `rgb(${r},${g},${b})`
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  return `rgb(${r},${g},${b})`;
 }
 
 /* Function for erasing the whole canvas */
-function eraseColor() {
-    boxes = document.querySelectorAll('.boxes')
-    for (let box of boxes) {
-        box.style.backgroundColor = ''
-    }
+function clearCellColor() {
+  cells = document.querySelectorAll(".cell");
+  for (let cell of cells) {
+    cell.style.backgroundColor = "";
+  }
 }
 
 /* Reset(remove) current grid size */
 function removeGrid() {
-    let boxes = container.querySelectorAll('div')
-    for (let box of boxes) { box.remove() }
+  cells = document.querySelectorAll(".cell");
+  for (let cell of cells) {
+    cell.remove();
+  }
 }
-/*Original code************************************************* */
-/* Select the box grid and add a click event to change color */
-/* When mouse is clicked && moving, color the box */
 
-// let blackBtn = document.querySelector('.black')
-// blackBtn.addEventListener('click', colorGrid)
-// function colorGrid() {
-//     const boxes = document.querySelectorAll('.boxes')
-//     for (let box of boxes) {
-//         box.addEventListener('mouseover', () => {
-//             if (mouseDown) {
-//                 box.style.backgroundColor = 'black'
-//                 // box.classList.add('colored')
-//             }
-//         })
-//         box.addEventListener('click', () => box.style.backgroundColor = 'black')
-//     }
-// }
+const authorBtn = document.querySelector(".author-btn");
+const authorModal = document.querySelector(".modal");
+authorBtn.addEventListener("click", () => {
+  authorBtn.classList.toggle("clicked");
+  if (authorBtn.classList.contains("clicked")) {
+    authorModal.style.display = "flex";
+  } else {
+    authorModal.style.display = "none";
+  }
+});
 
-// let rainbowBtn = document.querySelector('.rainbow')
-// rainbowBtn.addEventListener('click', colorRainbow)
-// function colorRainbow() {
-//     const boxes = container.querySelectorAll('div')
-//     for (let box of boxes) {
-//         box.addEventListener('mouseover', () => {
-//             if (mouseDown) {
-//                 box.style.backgroundColor = makeRandomColor()
-//             }
-//         })
-//         box.addEventListener('click', () => box.style.backgroundColor = makeRandomColor())
-//     }
-// }
-
-
-
-// let darkModeBtn = document.querySelector('.dark')
-// darkModeBtn.addEventListener('click', colorFluore)
-// function colorFluore() {
-//     let boxes = container.querySelectorAll('div')
-//     for (let box of boxes) {
-//         box.addEventListener('mouseover', () => {
-//             if (mouseDown) {
-//                 box.classList.add('fluore')
-//             }
-//         })
-//         box.addEventListener('click', () => box.classList.add('fluore'))
-//     }
-// }
-/************************************************* */
-
-
-/* 15th July _  color grid () is not working when new grid is made*/
-
+function startTime() {
+  let today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  m = checkTime(m);
+  document.querySelector(".time").innerHTML = h + ":" + m;
+}
+function checkTime(i) {
+  // add zero in front of numbers < 10
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+/* TODO
+2. Author modal styling
+3. App minimize function
+ */

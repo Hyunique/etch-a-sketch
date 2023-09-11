@@ -133,9 +133,22 @@ authorBtn.addEventListener("click", () => {
     authorModal.style.display = "none";
   }
 });
+
+function startTime() {
+  let today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  m = checkTime(m);
+  document.querySelector(".time").innerHTML = h + ":" + m;
+}
+function checkTime(i) {
+  // add zero in front of numbers < 10
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
 /* TODO
-1. Button clicked class toggle ///////
 2. Author modal styling
 3. App minimize function
-4. Time
  */

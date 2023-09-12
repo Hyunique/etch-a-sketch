@@ -17,7 +17,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.border-off {
+.not-clicked {
   border-top: 2px solid white;
   border-left: 2px solid white;
   border-right: 2px solid #c0a275;
@@ -103,6 +103,7 @@ header {
 }
 .min-btn {
   padding-bottom: 4px;
+  cursor: pointer;
 }
 main {
   display: flex;
@@ -184,12 +185,13 @@ main {
   margin: 20px;
   display: grid;
   grid-template-columns: repeat(4, 25%);
+  cursor: url(./pencil-icon.png), auto;
 }
+
 .cell {
   background-color: white;
   width: auto;
   height: auto;
-  /* border: var(--border); */
 }
 
 footer {

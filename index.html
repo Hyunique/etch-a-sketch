@@ -18,9 +18,7 @@
     <body onload="startTime()"">
         <div class=" system-btn">
         <div>
-            <button class="app-icon"><span class="material-symbols-outlined">
-                    palette
-                </span></button>
+            <button class="app-icon">🎨</button>
             <h3 class="icon-title">Painter</h3>
         </div>
         <div>
@@ -29,19 +27,19 @@
         <h3 class="icon-title">Theme</h3>
         </div>
 
-        <div class="app border-off">
+        <div class="app not-clicked">
             <header>
-                <h1 class="title">May Bob Ross be with you .jpg</h1>
+                <h1 class="title">🎨 May Bob Ross be with you .jpg</h1>
                 <div class="header-btns">
-                    <button class="min-btn border-off"><span class="material-symbols-outlined">
+                    <button class="min-btn not-clicked"><span class="material-symbols-outlined">
                             minimize
                         </span></button>
-                    <button class="max-btn border-off">
+                    <button class="max-btn not-clicked">
                         <span class="material-symbols-outlined">
                             stop
                         </span>
                     </button>
-                    <button class="close-btn border-off"><span class="material-symbols-outlined">
+                    <button class="close-btn not-clicked"><span class="material-symbols-outlined">
                             close
                         </span></button>
                 </div>
@@ -49,14 +47,14 @@
             <main>
                 <div class="tools">
                     <div class="tool-btns">
-                        <button class="tool-btn border-off" id="colorMode" value="black">✏️</button>
-                        <button class="tool-btn border-off" id="colorMode" value="rainbow">🌈</button>
-                        <button class="tool-btn border-off" id="colorMode" value="erase">✨</button>
-                        <button class="tool-btn clear-btn border-off" id="colorMode" value="clear">🪄</button>
+                        <button class="tool-btn not-clicked clicked " id="colorMode" value="black">✏️</button>
+                        <button class="tool-btn not-clicked" id="colorMode" value="rainbow">🌈</button>
+                        <button class="tool-btn not-clicked" id="colorMode" value="erase">✨</button>
+                        <button class="tool-btn clear-btn not-clicked" id="colorMode" value="clear">🪄</button>
                     </div>
                     <div class="sizeControl">
                         <label for="gridSize"></label>
-                        <input type="range" class="slider clicked" id="gridSize" name="size" min="8" max="52" step="4"
+                        <input type="range" class="slider clicked" id="gridSize" name="size" min="16" max="80" step="4"
                             value="4">
                     </div>
                 </div>
@@ -68,7 +66,7 @@
             </main>
         </div>
         <footer>
-            <div class="modal border-off">
+            <div class="modal not-clicked">
                 <h3 class=" copyright">Designed & Built </h3>
                 <h3 class=" copyright">by Elena</h3>
                 <div class="social-icons">
@@ -78,7 +76,7 @@
                     </a>
                 </div>
             </div>
-            <div class="author-btn border-off">👩🏽‍💻</div>
+            <div class="author-btn not-clicked">👩🏽‍💻</div>
             <div class="program-btn clicked">🎨May Bob Ross.. - Painter</div>
             <div class="time clicked"></div>
         </footer>
@@ -87,42 +85,3 @@
     </body>
 
 </html>
-
-
-<!-- <h1 class="etchsketch">Etch A Sketch</h1>
-            <div class="container">
-    
-                <div class="device">
-                    <div class="left">
-    
-    
-                    </div>
-                    <div class="middle">
-                        <div class="boxContainer"> </div>
-                        <div class="resettoggle">
-                            <label class="resetlabel">
-    
-                                <input type="checkbox">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <label for="" class="radioWrap">
-                            <input type="radio" name="mode" id="colorMode" value="black" class="black" checked>
-                            <span class="checkmark"></span>
-                        </label>
-                        <label for="" class="radioWrap">
-                            <input type="radio" name="mode" id="colorMode" value="rainbow" class="rainbow">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label for="" class="radioWrap">
-                            <input type="radio" name="mode" id="colorMode" value="dark" class="dark">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>
-    
-            </div>
-    
-            <span class="copyright">Built & designed by Hyunique</span> -->

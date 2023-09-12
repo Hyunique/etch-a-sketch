@@ -72,7 +72,7 @@ function getColorState(e) {
         e.target.style.backgroundColor = makeRandomColor();
         break;
       case "erase":
-        e.target.style.backgroundColor = "white";
+        e.target.style.backgroundColor = "";
         break;
 
       case "black":
@@ -83,15 +83,15 @@ function getColorState(e) {
   }
 }
 function paintCell(color) {
-  canvas.addEventListener("click", (e) => {
-    // For each click
-    getColorState(e);
-  });
   canvas.addEventListener("mouseover", (e) => {
     // For click and drag
     if (mouseDown) {
       getColorState(e);
     }
+  });
+  canvas.addEventListener("click", (e) => {
+    // For each click
+    getColorState(e);
   });
 }
 

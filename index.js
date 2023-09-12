@@ -13,15 +13,16 @@ createGrid();
 gridController.addEventListener("input", createGrid);
 
 toolBtnsContainer.addEventListener("click", (e) => {
-  toolBtns.forEach((btn) => btn.classList.remove("clicked"));
   if (e.target.classList.contains("tool-btn")) {
+    toolBtns.forEach((btn) => btn.classList.remove("clicked"));
     e.target.classList.toggle("clicked");
     setColorState(e);
-  }
-  if (e.target.value === "erase") {
-    canvas.style.cursor = "url('./img/eraser-icon.png'),auto";
-  } else {
-    canvas.style.cursor = "url('./img/pencil-icon.png'),auto";
+
+    if (e.target.value === "erase") {
+      canvas.style.cursor = "url('./img/eraser-icon.png'),auto";
+    } else {
+      canvas.style.cursor = "url('./img/pencil-icon.png'),auto";
+    }
   }
 });
 clearBtn.addEventListener("mousedown", () => {
@@ -30,9 +31,10 @@ clearBtn.addEventListener("mousedown", () => {
 clearBtn.addEventListener("mouseup", () => {
   clearBtn.classList.remove("clicked");
   clearCanvas();
+  // pencilBtn.classList.remove("not-clicked");
 });
 
-/* Function to create box and put it in grid */
+/* Function to create box and display it in grid */
 function createGrid(gridNum) {
   removeGrid();
   gridNum = gridController.value;
@@ -52,7 +54,7 @@ function removeGrid() {
     cell.remove();
   }
 }
-/* Clear canvas */
+/* Clear all colors on canvas */
 function clearCanvas() {
   cells = document.querySelectorAll(".cell");
   for (let cell of cells) {

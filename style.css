@@ -39,7 +39,7 @@ body {
   font-family: var(--font);
   font-size: 1rem;
 }
-.system-btn {
+/* .system-btn {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -59,7 +59,7 @@ body {
 .icon-title {
   font-size: 0.9rem;
   color: var(--color-border);
-}
+} */
 
 .app {
   border-radius: 14px;

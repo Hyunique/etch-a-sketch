@@ -185,7 +185,7 @@ main {
   margin: 20px;
   display: grid;
   grid-template-columns: repeat(4, 25%);
-  cursor: url(./pencil-icon.png), auto;
+  cursor: url(./img/pencil-icon.png), auto;
 }
 
 .cell {
@@ -231,6 +231,7 @@ footer div {
   grid-column: 2 / span 4;
   justify-content: left;
   font-size: 1rem;
+  max-width: 300px;
 }
 .time {
   grid-column: 16 / span 1;

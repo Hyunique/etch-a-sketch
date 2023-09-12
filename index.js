@@ -14,12 +14,23 @@ gridController.addEventListener("input", createGrid);
 
 toolBtnsContainer.addEventListener("click", (e) => {
   toolBtns.forEach((btn) => btn.classList.remove("clicked"));
-  if (e.target.tagName === "BUTTON") {
+  if (e.target.classList.contains("tool-btn")) {
     e.target.classList.toggle("clicked");
     setColorState(e);
   }
+  if (e.target.value === "erase") {
+    canvas.style.cursor = "url('./img/eraser-icon.png'),auto";
+  } else {
+    canvas.style.cursor = "url('./img/pencil-icon.png'),auto";
+  }
 });
-clearBtn.addEventListener("click", clearCanvas);
+clearBtn.addEventListener("mousedown", () => {
+  clearBtn.classList.add("clicked");
+});
+clearBtn.addEventListener("mouseup", () => {
+  clearBtn.classList.remove("clicked");
+  clearCanvas();
+});
 
 /* Function to create box and put it in grid */
 function createGrid(gridNum) {
@@ -143,4 +154,5 @@ function maxWindow() {
   programBtn.style.backgroundColor = "var(--color-system-bg)";
 }
 /* TODO
+
  */
